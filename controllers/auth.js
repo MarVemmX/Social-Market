@@ -36,22 +36,36 @@ exports.login = async (req, res, next) => {
 
 // @desc    Register user
 exports.register = async (req, res, next) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, name, phone, gender } = req.body;
 
+    if (!username || !password || !name || !phone || !email || !gender) {
+        // return res.status(400).json({ msg: 'Mời nhập các trường vào' });
+        return next(new ErrorResponse('Vui lòng nhập các trường vào', 400));
+    }
+
+    const oldUser = await User.findOne({ username });
+
+    if (oldUser) {
+        // return res.status(401).json({ mgs: 'Username đã tồn tại trong database' });
+        return next(new ErrorResponse('Username đã tồn tại trong db', 401));
+    }
     try {
-        const user = await User.create({
+        const newUser = await User.create({
             username,
             email,
             password,
+            name,
+            phone,
+            gender,
         });
 
-        sendToken(user, 200, res);
+        sendToken(newUser, 200, res);
     } catch (err) {
         next(err);
     }
 };
 
-// @desc    Forgot Password Initialization
+// @desc    Forgot Password
 exports.forgotPassword = async (req, res, next) => {
     // Send Email to email provided but first check if user exists
     const { email } = req.body;
