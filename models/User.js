@@ -34,10 +34,14 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Please enter your phone.'],
     },
     gender: {
-        type: Boolean,
+        type: String,
         required: [true, 'Please enter your gender.'],
     },
     avatar: {
+        type: String,
+        // default: 'https://res.cloudinary.com/dxnfxl89q/image/upload/v1612713326/fullauth/pkvlumfwc2nxtdnwcppk.jpg',
+    },
+    cloudinary_id: {
         type: String,
     },
     star_vote: {
