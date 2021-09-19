@@ -6,7 +6,7 @@ const connectDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
-            useFindAndModify: true,
+            useFindAndModify: false, // true là lỗi findByIdAndUpdate
         });
 
         console.log('MongoDB Connected');

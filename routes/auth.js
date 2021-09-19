@@ -1,4 +1,6 @@
 import express from 'express';
+import upload from '../utils/multer';
+
 const router = express.Router();
 
 // Controllers

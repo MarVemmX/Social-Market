@@ -4,7 +4,7 @@ import User from '../models/User';
 import sendEmail from '../utils/sendEmail';
 import jwt from 'jsonwebtoken';
 
-// @desc    Login user
+// @desc    Login user --> [POST] / api/auth/login
 exports.login = async (req, res, next) => {
     const { username, password } = req.body;
 
@@ -34,7 +34,7 @@ exports.login = async (req, res, next) => {
     }
 };
 
-// @desc    Register user
+// @desc    Register user --> [POST] /api/auth/register
 exports.register = async (req, res, next) => {
     const { username, email, password, name, phone, gender } = req.body;
 
