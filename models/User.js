@@ -39,10 +39,11 @@ const UserSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        // default: 'https://res.cloudinary.com/dxnfxl89q/image/upload/v1612713326/fullauth/pkvlumfwc2nxtdnwcppk.jpg',
+        default: 'https://res.cloudinary.com/dxnfxl89q/image/upload/v1612713326/fullauth/pkvlumfwc2nxtdnwcppk.jpg',
     },
     cloudinary_id: {
         type: String,
+        default: 'dadsadasdas',
     },
     star_vote: {
         type: Number,
@@ -83,6 +84,7 @@ UserSchema.methods.getSignedJwtToken = function () {
     });
 };
 
+// update and reset password
 UserSchema.methods.getResetPasswordToken = function () {
     const resetToken = crypto.randomBytes(20).toString('hex');
 
