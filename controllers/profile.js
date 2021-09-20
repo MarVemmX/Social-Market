@@ -1,5 +1,4 @@
 import cloudinary from '../utils/cloudinary';
-import upload from '../utils/multer';
 import ErrorResponse from '../utils/errorResponse';
 import User from '../models/User';
 import bcrypt from 'bcryptjs';
@@ -9,7 +8,7 @@ exports.getUserInfo = async (req, res, next) => {
     const { id } = req.params;
 
     try {
-        const user = await User.findById({ _id: id });
+        let user = await User.findById({ _id: id });
         res.status(200).json(user);
     } catch (err) {
         res.status(404).json({ message: error.message });
@@ -19,23 +18,26 @@ exports.getUserInfo = async (req, res, next) => {
 // @desc Update info user --> [PATCH] /api/profile/edit/:id
 exports.updateUserInfo = async (req, res) => {
     const { id } = req.params;
-    const { name, email, password, phone, gender } = req.body;
+    const { name, email, address, phone, gender } = req.body;
     try {
+        let user = await User.findById(id);
         // field to update
         const data = {
             name: name || user.name,
             email: email || user.email,
+            address: address || user.address,
             phone: phone || user.phone,
             gender: gender || user.gender,
         };
         // update query
-        const user = await User.updateOne(id, data, { new: true });
+        user = await User.findByIdAndUpdate(id, data, { new: true });
         res.status(200).json({ message: 'Cập nhật thông tin thành công', user });
     } catch (err) {
         console.log(err); //tạm thời log ra lỗi
     }
 };
 
+// @desc Change avatar (get link to cloudinary) --> [PUT] /api/change-avatar/:id
 exports.changeAvatar = async (req, res, next) => {
     try {
         let user = await User.findById(req.params.id);
