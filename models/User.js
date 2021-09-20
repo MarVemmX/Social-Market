@@ -37,6 +37,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter your gender.'],
     },
+    address: {
+        type: String,
+    },
     avatar: {
         type: String,
         default: 'https://res.cloudinary.com/dxnfxl89q/image/upload/v1612713326/fullauth/pkvlumfwc2nxtdnwcppk.jpg',
