@@ -3,66 +3,71 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 
-const UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: [true, 'Please enter your username'],
+const UserSchema = new mongoose.Schema(
+    {
+        username: {
+            type: String,
+            required: [true, 'Please enter your username'],
+        },
+        email: {
+            type: String,
+            required: [true, 'Please enter your email'],
+            unique: true,
+            match: [
+                // regex
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                '  Vui lòng nhập đúng định dạng email',
+            ],
+        },
+        password: {
+            type: String,
+            required: [true, 'Please enter your password'],
+            minlength: 6,
+            select: false,
+        },
+        name: {
+            type: String,
+            required: [true, 'Please enter your name.'],
+        },
+        phone: {
+            type: String,
+            maxlength: 12,
+            required: [true, 'Please enter your phone.'],
+        },
+        gender: {
+            type: String,
+            required: [true, 'Please enter your gender.'],
+        },
+        address: {
+            type: String,
+        },
+        avatar: {
+            type: String,
+            default: 'https://res.cloudinary.com/dxnfxl89q/image/upload/v1612713326/fullauth/pkvlumfwc2nxtdnwcppk.jpg',
+        },
+        cloudinary_id: {
+            type: String,
+            default: 'dadsadasdas',
+        },
+        star_vote: {
+            type: Number,
+            default: 0,
+        },
+        role: {
+            type: Number,
+            default: 0, // 0 is user, 1 is admin
+        },
+        resetPasswordToken: {
+            type: String,
+        },
+        resetPasswordExpire: {
+            type: Date,
+        },
     },
-    email: {
-        type: String,
-        required: [true, 'Please enter your email'],
-        unique: true,
-        match: [
-            // regex
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            '  Vui lòng nhập đúng định dạng email',
-        ],
-    },
-    password: {
-        type: String,
-        required: [true, 'Please enter your password'],
-        minlength: 6,
-        select: false,
-    },
-    name: {
-        type: String,
-        required: [true, 'Please enter your name.'],
-    },
-    phone: {
-        type: Number,
-        maxlength: 12,
-        required: [true, 'Please enter your phone.'],
-    },
-    gender: {
-        type: String,
-        required: [true, 'Please enter your gender.'],
-    },
-    address: {
-        type: String,
-    },
-    avatar: {
-        type: String,
-        default: 'https://res.cloudinary.com/dxnfxl89q/image/upload/v1612713326/fullauth/pkvlumfwc2nxtdnwcppk.jpg',
-    },
-    cloudinary_id: {
-        type: String,
-        default: 'dadsadasdas',
-    },
-    star_vote: {
-        type: Number,
-        default: 0,
-    },
-    role: {
-        type: Number,
-        default: 0, // 0 is user, 1 is admin
-    },
-    resetPasswordToken: {
-        type: String,
-    },
-    resetPasswordExpire: {
-        type: Date,
-    },
-});
+    {
+        timestamps: true,
+    }
+);
 
 // mã hóa mật khẩu
 UserSchema.pre('save', async function (next) {

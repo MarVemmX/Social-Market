@@ -40,10 +40,15 @@ exports.updateUserInfo = async (req, res) => {
 // @desc Change avatar (get link to cloudinary) --> [PUT] /api/change-avatar/:id
 exports.changeAvatar = async (req, res, next) => {
     try {
+        if (req.file.size > 1024 * 1024 * 5) {
+            return next(new ErrorResponse('Ảnh phải nhỏ hơn 5mb 🚫', 404));
+        }
         let user = await User.findById(req.params.id);
         // Delete image from cloudinary
         await cloudinary.uploader.destroy(user.cloudinary_id);
         // Upload image to cloudinary
+
+        console.log(req.file.size);
         let result;
         if (req.file) {
             result = await cloudinary.uploader.upload(req.file.path);
@@ -53,7 +58,7 @@ exports.changeAvatar = async (req, res, next) => {
             cloudinary_id: result?.public_id || user.cloudinary_id,
         };
         user = await User.findByIdAndUpdate(req.params.id, data, { new: true });
-        res.json({ message: 'Cập nhật ảnh thành công', user });
+        res.json({ message: 'Cập nhật ảnh thành công 🙂', user });
     } catch (err) {
         console.log(err);
     }
