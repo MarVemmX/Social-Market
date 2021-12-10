@@ -1,4 +1,5 @@
 import Category from '../models/Category';
+import ErrorResponse from '../utils/errorResponse';
 
 /**
  * @desc   get categoryId --> [GET] /api/category/:id
@@ -12,7 +13,7 @@ exports.categoryId = async (req, res, next, id) => {
             });
         }
         req.category = category;
-        next()
+        next();
     })
 }
 
@@ -21,8 +22,20 @@ exports.categoryId = async (req, res, next, id) => {
  * @access  Private , admin
  */
 exports.create = async (req, res) => {
-    // .....................
-    // .....................
+    const { nameCategory } = req.body;
+    const category = await Category.findOne({ nameCategory });
+
+    if (category) {
+        return next(new ErrorResponse('Danh Muc Da Ton Tai', 400));
+    }
+    
+    try {
+        const newCategory = await Category.create({
+            nameCategory
+        })
+    } catch(err) {
+        next(err);
+    }
 }
 
 /**
