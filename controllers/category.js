@@ -42,7 +42,7 @@ exports.create = async (req, res) => {
  * @desc   Read category --> [GET] /api/category/:id
  * @access  Private , admin
  */
-exports.read = async (req, res) => {
+exports.read = (req, res) => {
     return res.json(req.category);
 }
 
@@ -51,8 +51,18 @@ exports.read = async (req, res) => {
  * @access  Private , admin
  */
 exports.update = async (req, res) => {
-    // .....................
-    // .....................
+    const { id } = req.params;
+    const { nameCategory } = req.body;
+
+    const category = await Category.findById(id);
+    if (category) {
+        category.nameCategory = nameCategory;
+
+        const updateCategory = await category.save();
+        res.status(200).json({ message: 'Cập nhật danh mục thành công ', updateCategory })
+    } else {
+        res.status(404).json({message: 'Không tìm thấy dang mục'})
+    }
 }
 
 /**
