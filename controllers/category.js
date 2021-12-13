@@ -70,8 +70,11 @@ exports.update = async (req, res) => {
  * @access  Private , admin
  */
 exports.delete = async (req, res) => {
-    // .....................
-    // .....................
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No category with id: ${id}`);
+    await Category.findByIdAndRemove(id);
+    res.status(200).json({ message: 'Xoa danh muc thanh cong' })
 }
 
 /**
