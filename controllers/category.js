@@ -72,7 +72,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No category with id: ${id}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`Khong tim thay danh muc ${id}`);
     await Category.findByIdAndRemove(id);
     res.status(200).json({ message: 'Xoa danh muc thanh cong' })
 }
@@ -81,9 +81,13 @@ exports.delete = async (req, res) => {
  * @desc   Get list category --> [GET] /api/category
  * @access  Private , admin
  */
-exports.list = async (req, res) => {
-     // .....................
-    // .....................
+exports.list =  (req, res) => {
+    Category.find({}, (err, categories) => {
+        if (err) {
+            return res.status(400).json({ err });
+        }
+        res.json({ categories });
+     })
 }
 
 

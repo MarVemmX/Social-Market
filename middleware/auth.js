@@ -3,7 +3,7 @@ import ErrorResponse from '../utils/errorResponse';
 import User from '../models/User';
 
 // middleware project route when go to home page
-exports.protect = async (req, res, next) => {
+exports.auth = async (req, res, next) => {
     let token;
 
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
