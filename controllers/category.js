@@ -18,7 +18,7 @@ exports.categoryId = async (req, res, next, id) => {
 }
 
 /**
- * @desc   Create new category --> [POST] /api/category/:id
+ * @desc   Create new category --> [POST] /api/category
  * @access  Private , admin
  */
 exports.create = async (req, res) => {
@@ -69,10 +69,9 @@ exports.update = async (req, res) => {
  * @desc   Delete category --> [Delete] /api/category/:id
  * @access  Private , admin
  */
-exports.delete = async (req, res) => {
+exports.deleteCategory = async (req, res) => {
     const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`Khong tim thay danh muc ${id}`);
     await Category.findByIdAndRemove(id);
     res.status(200).json({ message: 'Xoa danh muc thanh cong' })
 }

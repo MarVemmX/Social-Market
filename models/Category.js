@@ -9,11 +9,11 @@ const categorySchema = new mongoose.Schema(
             trim: true,
             unique: true,
         },
-        slug: {
-            type: String,
-            slug: 'nameCategory',
-            unique: true,
-        },
+        // slug: {
+        //     type: String,
+        //     slug: 'nameCategory',
+        //     unique: true,
+        // },
     },
     {
         timestamps: true,
@@ -21,7 +21,7 @@ const categorySchema = new mongoose.Schema(
 );
 
 // Add plugins
-mongoose.plugin(slug);
+// mongoose.plugin(slug);
 
 const Category = mongoose.model('Category', categorySchema);
 

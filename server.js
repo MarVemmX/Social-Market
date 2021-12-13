@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors({ origin: true }));
 
-// Cho phép lý dữ liệu từ form method POST
+// Cho phép lấy dữ liệu từ form method POST
 app.use(express.urlencoded({ extended: true }));
 
 // Add headers before the routes are defined

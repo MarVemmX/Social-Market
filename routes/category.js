@@ -1,13 +1,15 @@
 import express from 'express';
-import { protect } from '../middleware/auth';
+import { auth } from '../middleware/auth';
 import { isAdmin } from '../middleware/isAdmin';
-import { categoryId, create, read, update, remove, list} from '../controllers/category';
+import { categoryId, create, read, update, deleteCategory, list} from '../controllers/category';
 const router = express.Router();
 
 router.get('/:categoryId', read);
-router.post('/create', protect, isAdmin, create);
-router.put('/:categoryId', protect, isAdmin, update);
-router.delete('/:categoryId', protect, isAdmin, remove);
+router.param('categoryId', categoryId )
+router.post('/create',  create);
+router.put('/:categoryId', auth, isAdmin, update);
+router.delete('/:categoryId', auth, isAdmin, deleteCategory);
 router.get('/categories', list);
 
+module.exports = router;
 
