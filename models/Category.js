@@ -17,7 +17,7 @@ const categorySchema = new mongoose.Schema(
     },
     {
         timestamps: true,
-    }
+    },
 );
 
 // Add plugins
