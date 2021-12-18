@@ -3,7 +3,7 @@ import slug from 'mongoose-slug-generator';
 
 const categorySchema = new mongoose.Schema(
     {
-        nameCategory: {
+        categoryName: {
             type: String,
             required: true,
             trim: true,
@@ -11,7 +11,7 @@ const categorySchema = new mongoose.Schema(
         },
         // slug: {
         //     type: String,
-        //     slug: 'nameCategory',
+        //     slug: 'categoryName',
         //     unique: true,
         // },
     },

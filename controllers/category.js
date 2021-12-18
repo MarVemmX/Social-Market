@@ -1,15 +1,18 @@
 import Category from '../models/Category';
 
-
+/**
+ * @desc   Create new category --> [POST] /api/category/create
+ * @access  Private , admin
+ */
 exports.createNewCategory = async (req, res) => {
-    const { nameCategory } = req.body;
-    const category = await Category.findOne({ nameCategory });
+    const { categoryName } = req.body;
+    const category = await Category.findOne({ categoryName });
 
     if (category) {
         return next(new ErrorResponse('Danh Muc Da Ton Tai', 400));
     }
     const newCategory = await Category.create({
-        nameCategory
+        categoryName
     });
 
     return res.status(200).json({ message: 'Them danh muc thanh cong', newCategory });
@@ -40,11 +43,11 @@ exports.getListCategory =  async (req, res) => {
  */
 exports.updateCategory = async (req, res) => {
     const { id } = req.params;
-    const { nameCategory } = req.body;
+    const { categoryName } = req.body;
 
     const category = await Category.findById(id);
     if (category) {
-        category.nameCategory = nameCategory;
+        category.categoryName = categoryName;
 
         const updateCategory = await category.save();
         res.status(200).json({ message: 'Cập nhật danh mục thành công ', updateCategory })
