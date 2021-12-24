@@ -1,0 +1,227 @@
+.header {
+    width: 275px;
+    height: 100vh;
+    position: relative;
+    z-index: 20;
+}
+
+.header__container {
+    height: 100%;
+    position: fixed;
+    width: 275px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #f1f1f1;
+    background-color: #fff;
+}
+
+.header__logo {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.menu {
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu__list {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.menu__list-item {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.menu__list-item a:hover {
+    background-color: var(--color-light-blue-hover);
+    border-radius: 40px;
+    color: var(--color-blue);
+}
+
+.menu__list-item.active a {
+    color: var(--color-blue);
+}
+
+.menu__list-item a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none !important;
+    padding: 0 20px;
+    height: 54px;
+    width: auto;
+    font-weight: 700;
+    transition: background-color .1s linear;
+    border-radius: 40px;
+}
+
+.menu__list-item--btn {
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.menu__list-item span.menu__list-post-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    padding: 0 50px;
+    width: auto;
+    font-weight: 700;
+    transition: background-color .1s linear;
+    border-radius: 40px;
+    font-size: 1.8rem;
+    color: #fff;
+    width: 70%;
+    height: 45px;
+    background-color: var(--color-blue);
+    cursor: pointer;
+    user-select: none;
+}
+
+.menu__list-item span.menu__list-post-btn i {
+    display: none;
+}
+
+.menu__list-item span.menu__list-post-btn:hover {
+    background-color: var(--color-blue-light-dark);
+}
+
+.menu__list-item a:hover {
+    text-decoration: none !important;
+}
+
+.menu__list-item a i {
+    font-size: 2.8rem;
+    margin-right: 20px;
+}
+
+.menu__list-item a span {
+    font-size: 1.9rem;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.menu__dropdown {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none !important;
+    padding: 10px;
+    height: 60px;
+    width: auto;
+    font-weight: 700;
+    transition: background-color .1s linear;
+    border-radius: 40px;
+    cursor: pointer;
+    width: auto;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.menu__dropdown:hover {
+    background-color: var(--color-light-blue-hover);
+    border-radius: 40px;
+}
+
+.menu__dropdown img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.menu__dropdown-infor {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.menu__dropdown i {
+    font-size: 2rem;
+}
+
+.menu__dropdown-box {
+    max-width: 300px;
+    width: 280px;
+    top: -20px !important;
+}
+
+.menu__dropdown-box {
+    max-width: 300px;
+    width: 280px;
+    top: -20px !important;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 5%);
+}
+
+.menu__dropdown-box-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+.menu__dropdown-box-item:hover:not(:first-child) {
+    background-color: #fcf8f8;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.menu__dropdown-box-item:not(:last-child) {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.menu__dropdown-box-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.menu__dropdown-box-item-infor {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.menu__dropdown-box-item i {
+    font-size: 2.5rem;
+    color: var(--color-blue);
+}
+
+.menu__dropdown-box-item-louout {
+    font-size: 1.6rem;
+    font-weight: 400;
+    transition: all .1s linear;
+    cursor: pointer;
+}
+
+.menu__dropdown-box-item:hover:not(:first-child) {
+    color: var(--color-blue);
+}
+
+.menu__notifications {
+    position: relative;
+}
+
+.menu__notifications .menu__notifications-badge {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+}

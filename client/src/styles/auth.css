@@ -1,0 +1,180 @@
+.form__wrap {
+    margin-top: 20px;
+}
+
+.form__input {
+    width: 100%;
+    position: relative;
+    height: 62px;
+    border: 1px solid rgb(207, 217, 222);
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.login {
+    margin: 0 auto;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login__form .MuiFilledInput-input {
+    font-size: 26px;
+}
+
+.form__wrap-input {
+    height: 22px;
+}
+
+.form__input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    outline: none;
+    font-size: 1.8rem;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+}
+
+.login__container {
+    max-width: 400px;
+    width: 400px;
+    margin-top: 30px;
+}
+
+.login__container img {
+    width: 50px;
+    height: 50px;
+    margin: 20px 0px;
+}
+
+.login__container h1 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 3.4rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--color-dark);
+    margin-bottom: 20px;
+}
+
+.register {
+    width: 100%;
+    height: 95vh;
+}
+
+.register .register__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.register__left {
+    width: 55%;
+    height: 100%;
+}
+
+.register__left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.register__right {
+    width: 45%;
+    padding: 20px 20px 20px 40px;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.register__right a img {
+    display: none;
+}
+
+.register__form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.register__right-heading {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #14171A;
+}
+
+.register__right-banner {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #14171A;
+}
+
+.register__form-gr {
+    display: flex;
+    justify-content: space-between;
+    /* width: 150%; */
+}
+
+.register__form-gr .MuiTypography-body1 {
+    font-size: 1.6rem;
+}
+
+.register__form-gr .MuiSvgIcon-root {
+    width: 22px;
+    height: 22px;
+}
+
+.register__form .MuiFormHelperText-contained {
+    font-size: 14px;
+    /* margin: 2px 0; */
+    position: relative;
+    color: var(--danger);
+}
+
+.register__bottom ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.register__bottom ul li {
+    padding: 0 20px;
+    font-size: 1.2rem;
+}
+
+.register__bottom ul li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.register__bottom p {
+    width: 100%;
+    text-align: center;
+    margin: 2px 0;
+    font-size: 1.3rem;
+}
+
+.register__gender-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register__gender-box a{
+    font-size: 1.4rem;
+    color: var(--color-blue);
+}
