@@ -1,2 +1,0 @@
-export const LOADING = "LOADING_SUGGESTION"
-export const GET_USERS = 'GET_SUGGESTION_USERS'
