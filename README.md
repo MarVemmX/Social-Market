@@ -14,7 +14,7 @@ Xây dựng website rao vặt, mua bán hoặc trao đổi đồ cũ cho sinh vi
     -   Comment bài đăng của sinh viên khác
     -   Xác nhận giao dịch mua bán hoặc trao đổi với sinh viên có nhu cầu
 -   Sinh viên có nhu cầu trao đổi
-    -   Đăng ký tài khảon
+    -   Đăng ký tài khoản
     -   Đăng nhập
     -   Cập nhật thông tin cá nhân
     -   Đăng ký trao đổi hoặc mua bán với sinh viên khác
