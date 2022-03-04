@@ -5,9 +5,9 @@ import { createNewCategory, getListCategory, updateCategory, deleteCategory } fr
 const router = express.Router();
 
 
-router.post('/create', auth, isAdmin, createNewCategory);
+router.post('/', auth, isAdmin, createNewCategory);
 router.get('/list', auth, isAdmin, getListCategory);
-router.put('/:id/edit', auth, isAdmin, updateCategory);
+router.put('/:id/', auth, isAdmin, updateCategory);
 router.delete('/:id', auth, isAdmin, deleteCategory);
 
 module.exports = router;
